@@ -28,7 +28,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Override // find invoice by id
     public Invoice getOneInvoice(Long InvoiceId) throws Exception {
         return invoiceRepository.findById(InvoiceId)
-                .orElseThrow(() -> new ResourceNotFoundException("موردی یافت نشد ! "));
+                .orElseThrow(() -> new ObjectNotFoundException("موردی یافت نشد ! "));
     }
 
 

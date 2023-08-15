@@ -2,6 +2,7 @@ package com.example.hyprerone.serviceImpl;
 
 import com.example.hyprerone.dto.ProductDto;
 import com.example.hyprerone.exceptions.BadRequestException;
+import com.example.hyprerone.exceptions.ObjectNotFoundException;
 import com.example.hyprerone.exceptions.ResourceNotFoundException;
 import com.example.hyprerone.model.Product;
 import com.example.hyprerone.repository.ProductRepository;
@@ -39,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
     @Override // find a product by id
     public Product getOneProduct(Long productId) throws Exception {
        return productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("موردی یافت نشد ! "));
+                .orElseThrow(() -> new ObjectNotFoundException("موردی یافت نشد ! "));
     }
 
 }
