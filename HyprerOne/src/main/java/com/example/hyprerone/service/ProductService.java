@@ -6,7 +6,7 @@ import com.example.hyprerone.model.Product;
 public interface ProductService <I,O>{
 
 
-    Product createProduct(Product product) throws Exception;
+    Product createProduct(ProductDto dto) throws Exception;
 
     Product getOneProduct(Long productId) throws Exception;
 

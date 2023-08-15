@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -16,21 +17,21 @@ import java.util.Date;
 public class InvoiceDto {
 
 
+
     private Long id;
-    private Long invoiceNumber;
+    private Integer invoiceNumber;
     private Date date;
-    private Product productId;
+    //    private List<Product> products;
+    private ProductDto productId;
 
 
-
-    // setting product properties
+    // setting invoice properties
     public InvoiceDto fromModel(Invoice invoice) {
         InvoiceDto dto = new InvoiceDto();
         dto.setId(invoice.getId());
         dto.setInvoiceNumber(invoice.getInvoiceNumber());
         dto.setDate(invoice.getDate());
-        dto.setProductId(invoice.getProductId());
-         Product productId;
+        dto.setProductId(dto.getProductId());
         return dto;
     }
 
