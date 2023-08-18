@@ -49,4 +49,12 @@ public class Invoice {
         return invoice;
     }
 
+    public InvoiceDto fromInvoiceModel(Invoice invoice) {
+        InvoiceDto dto = new InvoiceDto();
+        dto.setId(invoice.getId());
+        dto.setInvoiceNumber(invoice.getInvoiceNumber());
+        dto.setDate(invoice.getDate());
+        dto.setProductId(dto.getProductId());
+        return dto;
+    }
 }

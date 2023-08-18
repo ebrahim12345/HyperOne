@@ -56,7 +56,7 @@ public class InvoiceController {
 
     @RequestMapping(value = "findInvoiceInvoiceNumber/{invoiceNumber}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Object> findPersonById(@PathVariable Integer invoiceNumber) throws Exception {
-            return ResponseEntity.ok().body(invoiceService.getInvoice(invoiceNumber));
+    public List <InvoiceDto> findPersonById(@PathVariable Integer invoiceNumber) throws Exception {
+            return invoiceService.getInvoice(invoiceNumber);
     }
 }

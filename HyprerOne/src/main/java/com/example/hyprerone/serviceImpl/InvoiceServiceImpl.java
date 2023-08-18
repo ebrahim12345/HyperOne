@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,8 +34,9 @@ public class InvoiceServiceImpl implements InvoiceService {
 
 
     @Override // find invoice by invoice number
-    public List<Invoice> getInvoice(Integer invoiceNumber) throws Exception {
-        List<Invoice> invoice = invoiceRepository.findAllByInvoiceNumberOrderByDateAsc(invoiceNumber);
+    public List<InvoiceDto> getInvoice(Integer invoiceNumber) throws Exception {
+        List<InvoiceDto> invoice = new ArrayList<>();
+        invoiceRepository.findAllByInvoiceNumberOrderByDateAsc(invoiceNumber).forEach(e -> invoice.add(e.fromInvoiceModel(e)));
         if (invoice.size() == 0) {
             throw new ObjectNotFoundException("کالایی برای فاکتور وارد شده ثبت نشده است  !");
         }

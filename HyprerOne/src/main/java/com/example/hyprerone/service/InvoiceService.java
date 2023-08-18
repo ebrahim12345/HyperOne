@@ -13,5 +13,5 @@ public interface InvoiceService {
 
     Invoice getOneInvoice(Long InvoiceId) throws Exception;
 
-    List <Invoice> getInvoice(Integer InvoiceId) throws Exception;
+    List <InvoiceDto> getInvoice(Integer InvoiceId) throws Exception;
 }
