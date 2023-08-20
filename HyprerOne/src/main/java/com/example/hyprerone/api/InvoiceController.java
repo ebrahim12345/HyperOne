@@ -24,7 +24,7 @@ public class InvoiceController {
     private InvoiceService invoiceService;
 
 
-    //  get one invoice
+    //  create invoice through defining product in it
     @PostMapping(value = "createInvoice/{invoiceNumber}")
     public ResponseEntity<Object> createInvoiceOfProduct(@RequestBody List<Invoice> productList, @PathVariable Integer invoiceNumber) {
         if ((!productList.isEmpty()) && invoiceNumber != null) {
@@ -40,7 +40,7 @@ public class InvoiceController {
 
 
 
-    //  get one invoice
+    //  get one invoice by id
     @RequestMapping(value = "findInvoiceById/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Invoice> findInvoiceById(@PathVariable Long id) throws Exception {
@@ -49,11 +49,20 @@ public class InvoiceController {
 
 
 
-    //  get one invoice
+    //  get one invoice by invoice number
 
-    @RequestMapping(value = "findInvoiceInvoiceNumber/{invoiceNumber}", method = RequestMethod.GET)
+    @RequestMapping(value = "findInvoiceByInvoiceNumber/{invoiceNumber}", method = RequestMethod.GET)
     @ResponseBody
-    public List <InvoiceDto> findInvoiceInvoiceNumber(@PathVariable Integer invoiceNumber) throws Exception {
+    public List <InvoiceDto> findInvoiceByInvoiceNumber(@PathVariable Integer invoiceNumber) throws Exception {
             return invoiceService.getInvoice(invoiceNumber);
+    }
+
+
+
+    //  get invoice total price by invoice number
+    @RequestMapping(value = "findInvoiceTotalPrice/{invoiceNumber}", method = RequestMethod.GET)
+    @ResponseBody
+    public Integer findInvoiceTotalPrice(@PathVariable Integer invoiceNumber) throws Exception {
+        return invoiceService.getInvoiceTotalPrice(invoiceNumber);
     }
 }

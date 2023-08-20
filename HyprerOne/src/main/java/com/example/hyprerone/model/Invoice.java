@@ -29,32 +29,39 @@ public class Invoice {
     @Column(name = "invoice_number")
     private Integer invoiceNumber;
 
-
     @Column(name = "date")
     private Date date;
 
-//    @OneToMany(fetch = FetchType.EAGER)
-//    private List<Product> products;
     @ManyToOne(fetch = FetchType.EAGER, targetEntity = Product.class)
     @JoinColumn(name = "product_Id", foreignKey = @ForeignKey(name = "fk_product"))
     private Product productId;
 
+    @Column(name = "total_proice")
+    private Integer totalPrice;
+
+    @Column(name = "number_of_product")
+    private Integer numberOfProduct;
+
     // setting invoice properties
     public Invoice fromDto(InvoiceDto dto) {
         Invoice invoice = new Invoice();
-        invoice.setId(dto.getId());
+//        invoice.setId(dto.getId());
         invoice.setInvoiceNumber(dto.getInvoiceNumber());
         invoice.setDate(dto.getDate());
         invoice.setProductId(invoice.getProductId());
+        invoice.setTotalPrice(dto.getTotalPrice());
+        invoice.setNumberOfProduct(dto.getNumberOfProduct());
         return invoice;
     }
 
     public InvoiceDto fromInvoiceModel(Invoice invoice) {
         InvoiceDto dto = new InvoiceDto();
-        dto.setId(invoice.getId());
+//        dto.setId(invoice.getId());
         dto.setInvoiceNumber(invoice.getInvoiceNumber());
         dto.setDate(invoice.getDate());
         dto.setProductId(dto.getProductId());
+        dto.setTotalPrice(invoice.getTotalPrice());
+        dto.setNumberOfProduct(dto.getNumberOfProduct());
         return dto;
     }
 }

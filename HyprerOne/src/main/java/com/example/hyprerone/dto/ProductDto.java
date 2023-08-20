@@ -25,9 +25,7 @@ public class ProductDto {
         ProductDto dto = new ProductDto();
         dto.setId(product.getId());
         dto.setProductName(product.getProductName());
-        dto.setNumberOfProduct(product.getNumberOfProduct());
         dto.setProductPrice(product.getProductPrice());
-        dto.setTotalPrice(product.getTotalPrice());
         return dto;
     }
 

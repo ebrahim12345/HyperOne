@@ -31,14 +31,11 @@ public class ProductController {
     }
 
 
-
-
-
     //  get one product
     @RequestMapping(value = "findProductById/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Product> findPersonById(@PathVariable Long id) throws Exception {
-            return new ResponseEntity<>(productService.getOneProduct(id), HttpStatus.OK);
+        return new ResponseEntity(productService.getOneProduct(id), HttpStatus.OK);
 
     }
 }

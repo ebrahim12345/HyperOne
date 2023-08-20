@@ -26,15 +26,8 @@ public class Product {
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "number_of_product")
-    private Integer numberOfProduct;
-
     @Column(name = "product_price")
     private Integer productPrice;
-
-    @Column(name = "total_proice")
-    private Integer totalPrice;
-
 
 
 
@@ -43,9 +36,7 @@ public class Product {
         Product product = new Product();
         product.setId(dto.getId());
         product.setProductName(dto.getProductName());
-        product.setNumberOfProduct(dto.getNumberOfProduct());
         product.setProductPrice(dto.getProductPrice());
-        product.setTotalPrice(dto.getTotalPrice());
         return product;
     }
 

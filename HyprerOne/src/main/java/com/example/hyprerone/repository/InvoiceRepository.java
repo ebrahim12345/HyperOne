@@ -19,6 +19,18 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long>, JpaSpec
     Optional<Invoice> findById(Long id);
 
     @Query("select i from Invoice i where i.invoiceNumber =:invoiceNumber")
-    List <Invoice> findAllByInvoiceNumberOrderByDateAsc(@Param("invoiceNumber") Integer invoiceNumber);
+    List<Invoice> findAllByInvoiceNumberOrderByDateAsc(@Param("invoiceNumber") Integer invoiceNumber);
+
+
+    // query to get invoice total price of product
+    @Query("SELECT SUM( i.totalPrice) FROM  Invoice i" +
+            " INNER JOIN Product p ON p.id = i.productId.id WHERE i.invoiceNumber =:invoiceNumber")
+    Integer findTotalPriceByInvoiceNumber(@Param("invoiceNumber") Integer invoiceNumber);
+
+
+//    SELECT sum(invoice.total_proice * product.number_of_product)
+//    FROM  hyper_one.invoice
+//    INNER JOIN hyper_one.product ON product.id = product_id
+//    WHERE invoice_number = 1000;
 
 }

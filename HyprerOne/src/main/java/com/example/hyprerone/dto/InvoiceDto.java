@@ -21,17 +21,19 @@ public class InvoiceDto {
     private Long id;
     private Integer invoiceNumber;
     private Date date;
-    //    private List<Product> products;
     private ProductDto productId;
+    private Integer totalPrice;
+    private Integer numberOfProduct;
 
 
     // setting invoice properties
     public InvoiceDto fromModel(Invoice invoice) {
         InvoiceDto dto = new InvoiceDto();
-        dto.setId(invoice.getId());
+//        dto.setId(invoice.getId());
         dto.setInvoiceNumber(invoice.getInvoiceNumber());
         dto.setDate(invoice.getDate());
         dto.setProductId(dto.getProductId());
+        dto.setTotalPrice(invoice.getTotalPrice());
         return dto;
     }
 

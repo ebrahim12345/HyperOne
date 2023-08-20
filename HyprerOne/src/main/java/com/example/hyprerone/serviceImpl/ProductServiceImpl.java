@@ -28,10 +28,6 @@ public class ProductServiceImpl implements ProductService {
         if (dto.getProductPrice() == null) {
             throw new BadRequestException("مبلغ  کالا را وارد کنید !");
         }
-        if (dto.getNumberOfProduct() == null) {
-            throw new BadRequestException("تعداد  کالا را وارد کنید !");
-        }
-        product.setTotalPrice(dto.getProductPrice());
         productRepository.save(product);
         return product;
     }
